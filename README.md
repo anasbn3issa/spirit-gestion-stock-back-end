@@ -1,16 +1,16 @@
 # spirit-gestion-stock-back-end
 
-#managing stock back end for esprit mini-project developed by spir'IT 2021 
+managing stock back end for esprit mini-project developed by spir'IT 2021 
 
-##projects requirements : 
+projects requirements : 
 
-#mysql port : 3306
-#server port : 8081 
-#database name : 'gestionmagasinstock' 
+mysql port : 3306
+server port : 8081 
+database name : 'gestionmagasinstock' 
 
-#in case you want to make a change of the requirements , change on your branch the 'spirit-gestion-stock-back-end/src/main/resources/application.properties' and change back before any merge 
+in case you want to make a change of the requirements , change on your branch the 'spirit-gestion-stock-back-end/src/main/resources/application.properties' and change back before any merge 
 
-#before merging make sure to : 
+before merging make sure to : 
 
-#maven clean 
-#all good practices to avoid conflicts :D 
+maven clean 
+all good practices to avoid conflicts :D 
