@@ -6,10 +6,12 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,42 +20,28 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
-@AllArgsConstructor
-@ToString
-@EqualsAndHashCode
 @Entity
+@Data
+@NoArgsConstructor
 @Table( name = "Client")
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Client implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column(name="idClient")
-	Long idClient; // Clé primaire
-	@NotNull
-	String nom;
-	@NotNull
-	String prenom;
-	@NotNull
-	String email;
-	@NotNull
-	String password;
-	@NotNull
+	private Long idClient; // Clé primaire
+	private String nom;
+	private String prenom;
+	private String email;
+	private String password;
 	@Temporal(TemporalType.DATE)
-	Date dateNaissance;
-	
-	@NotNull
+	private Date dateNaissance;
 	@Enumerated(EnumType.STRING)
-	Profession profession;
-	
-	@NotNull
+	private Profession profession;
 	@Enumerated(EnumType.STRING)
-	CategorieClient categorieClient;
+	private CategorieClient categorieClient;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="client")
-	Set<Facture> factures;
+	@JsonIgnore
+	private Set<Facture> factures;
 	
 	
 }
