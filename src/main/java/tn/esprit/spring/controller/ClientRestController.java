@@ -26,7 +26,7 @@ public class ClientRestController {
 	@Autowired
 	CltServiceImpl clientService;
 	
-	@ApiOperation(value = "Récupérer la liste des clients")
+	@ApiOperation(value = "R�cuperer la liste des clients")
 	@GetMapping("/retrieve-all-clients")
 	@ResponseBody
 	public List<Client> getClients() {
@@ -34,7 +34,7 @@ public class ClientRestController {
 	return listClients;
 	}
 	
-	@ApiOperation(value = "Récupérer un client par Id")
+	@ApiOperation(value = "R�cuperer un client par Id")
 	@GetMapping("/retrieve-client/{client-id}")
 	@ResponseBody
 	public Client retrieveClient(@PathVariable("client-id") Long clientId) {
