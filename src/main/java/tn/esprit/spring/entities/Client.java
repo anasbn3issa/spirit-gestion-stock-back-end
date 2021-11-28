@@ -32,6 +32,7 @@ public class Client implements Serializable{
 	private String prenom;
 	private String email;
 	private String password;
+	private String photo;
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
 	@Enumerated(EnumType.STRING)

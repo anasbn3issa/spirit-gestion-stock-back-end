@@ -59,4 +59,9 @@ public class CltServiceImpl implements ClientServiceImpl{
 		return clientRepository.retrieveClientsByDates(date1, date2) ;
 	}
 
+	@Override
+	public float incomeFromClient(Long idClient) {
+		return clientRepository.getIncomeFromClient(idClient);
+	}
+
 }

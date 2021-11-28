@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import tn.esprit.spring.entities.Client;
+import tn.esprit.spring.repositories.ClientRepository;
 import tn.esprit.spring.services.client.ClientServiceImpl;
 @CrossOrigin(origins= "http://localhost:4200")
 @RestController
@@ -62,4 +63,12 @@ public class ClientRestController {
 	public Client modifyClient(@RequestBody Client client) {
 	return clientService.updateClient(client);
 	}
+	
+	//http://localhost:8089/SpringMVC/client/retrieve-client/8
+		@GetMapping("/income-from-client/{client-id}")
+		@ResponseBody
+		public float incomeFromClient(@PathVariable("client-id") Long clientId) {
+			return clientService.incomeFromClient(clientId);
+		}
+	
 }

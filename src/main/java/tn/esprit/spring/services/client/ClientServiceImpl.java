@@ -19,5 +19,7 @@ public interface ClientServiceImpl {
 	Client retrieveClient(Long id);
 	
 	List<Client> retrieveClientsByDates(Date date1, Date date2);
+	
+	float incomeFromClient(Long idClient);
 
 }
