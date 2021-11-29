@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import tn.esprit.spring.entities.Client;
+import tn.esprit.spring.entities.Produit;
 
 
 public interface ClientServiceImpl {
@@ -22,4 +23,5 @@ public interface ClientServiceImpl {
 	
 	float incomeFromClient(Long idClient);
 
+	List<Produit> purchaseHistory(Long idClient);
 }

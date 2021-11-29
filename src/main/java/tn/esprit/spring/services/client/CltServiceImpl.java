@@ -1,5 +1,6 @@
 package tn.esprit.spring.services.client;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import tn.esprit.spring.entities.Client;
+import tn.esprit.spring.entities.DetailFacture;
+import tn.esprit.spring.entities.Produit;
 import tn.esprit.spring.repositories.ClientRepository;
 
 @Slf4j
@@ -63,5 +66,26 @@ public class CltServiceImpl implements ClientServiceImpl{
 	public float incomeFromClient(Long idClient) {
 		return clientRepository.getIncomeFromClient(idClient);
 	}
+
+	@Override
+	public List<Produit> purchaseHistory(Long idClient) {
+		List<DetailFacture> listDetailFacture= clientRepository.getPurchaseHistory(idClient);
+		List<Produit> listProduit = new ArrayList<>();
+		for (DetailFacture detf:listDetailFacture) {
+			Produit p= new Produit();
+			p.setCode(detf.getProduit().getCode());
+			p.setLibelle(detf.getProduit().getLibelle());
+			p.setIdProduit(detf.getProduit().getIdProduit());
+			p.setPrixUnitaire(detf.getProduit().getPrixUnitaire());
+			//listProduit.add(detf.getProduit());
+			listProduit.add(p);
+			log.info("-----"+p);
+		}
+		
+		log.info("listProduit-------"+listProduit);
+		return listProduit;
+	}
+
+	
 
 }

@@ -9,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import tn.esprit.spring.entities.Client;
+import tn.esprit.spring.entities.DetailFacture;
+import tn.esprit.spring.entities.Produit;
 
 @Repository
 public interface ClientRepository extends CrudRepository<Client, Long> {
@@ -17,4 +19,8 @@ public interface ClientRepository extends CrudRepository<Client, Long> {
 	
 	@Query("SELECT SUM (f.montantFacture) FROM Client c, Facture f WHERE (c.idClient = :idClient) AND (f.client.idClient = :idClient)")
 	float getIncomeFromClient(@Param("idClient")Long idClient);
+	
+	@Query("SELECT f FROM Client c, DetailFacture f WHERE (c.idClient = :idClient) AND (f.facture.client.idClient = :idClient)")
+	List<DetailFacture> getPurchaseHistory(@Param("idClient") Long idClient);
+
 }
