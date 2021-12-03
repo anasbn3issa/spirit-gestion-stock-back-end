@@ -64,13 +64,9 @@ _Below is an example of how you can instruct your audience on installing and set
    git clone https://github.com/anasbn3issa/spirit-gestion-stock-back-end.git
    ```
 2. Update the project
-   ```sh
-   git clone https://github.com/anasbn3issa/spirit-gestion-stock-back-ends.git
-   ```
+  
 3. Install maven packages
-   ```sh
-   maven install
-   ```
+  
 4. Run as spring boot app
   
 
@@ -81,7 +77,7 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-this back end helps you send basic CRUD services to your front managing stock application ,plus more advanced functionalities in order to practice typical relations in the market .
+this back end helps you send basic CRUD services to your front managing stock application , plus more advanced functionalities in order to practice typical relations in the market and have more control over your data.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
