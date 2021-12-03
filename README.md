@@ -2,28 +2,14 @@
 
 
 
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][https://github.com/anasbn3issa]
-[![Contributors][contributors-shield]][https://github.com/WajdiSd]
-[![Contributors][contributors-shield]][https://github.com/CyrineLouati]
-[![Contributors][contributors-shield]][https://github.com/Parsath]
-[![Contributors][contributors-shield]][https://github.com/EyaAr]
-[![Contributors][contributors-shield]][https://github.com/Maryem726]
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    
+    ![logo](https://user-images.githubusercontent.com/47992691/144571525-d714c437-2fe4-456a-a876-be6876371a3c.png)
+
+    
   </a>
 
   <h3 align="center">Gestion stock back-end</h3>
