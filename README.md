@@ -5,11 +5,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    
-    ![logo](https://user-images.githubusercontent.com/47992691/144571525-d714c437-2fe4-456a-a876-be6876371a3c.png)
-
-    
+  <a href="https://github.com/anasbn3issa/spirit-gestion-stock-back-end">
   </a>
 
   <h3 align="center">Gestion stock back-end</h3>
@@ -28,7 +24,8 @@
 <!-- ABOUT THE PROJECT -->
 ## spirit-gestion-stock-back-end
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![logo](https://user-images.githubusercontent.com/47992691/144571774-6aca96ca-604a-4a5b-b89a-05a1fe618720.png)
+
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
