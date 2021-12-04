@@ -52,7 +52,7 @@ public class ClientBatchConfig {
                     "dateNaissance," +
                     "profession," +
                     "categorieClient," +
-            "FROM CLIENTS ";
+            "FROM client ";
 	//private String delimiter = ",";
 
 	@Autowired
@@ -69,12 +69,12 @@ public class ClientBatchConfig {
 	}
 
 	/*8 Créer le step associé au job et le lancer*/
-	/*@Bean
-	public Step stockStep() {
-		return stepBuilderFactory.get(STEP_NAME).<Client, Client>chunk(5).reader(clientItemReader())
+	@Bean
+	public Step stockStep(DataSource dataSource) {
+		return stepBuilderFactory.get(STEP_NAME).<Client, Client>chunk(5).reader(clientItemReader(dataSource))
 				.processor(clientItemProcessor()).writer(clientItemWriter()).build();
 	}
-	*/
+	
 	/*9. étape 1 (ItemReader) Créer le reader pour récupérer les données depuis
 	 * le fichier csv*/
 	@Bean
