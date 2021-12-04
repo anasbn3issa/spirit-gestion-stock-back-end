@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.batch.core.JobParametersInvalidException;
+import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
+import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
+import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
+import tn.esprit.spring.BatchLauncher;
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.DetailFacture;
 import tn.esprit.spring.entities.Produit;
@@ -20,7 +25,9 @@ public class CltServiceImpl implements ClientServiceImpl{
 	
 	@Autowired
 	private ClientRepository clientRepository;
-
+	
+	@Autowired
+    private BatchLauncher batchLauncher;
 	@Override
 	public List<Client> retrieveAllClients() {
 		// TODO Auto-generated method stub
@@ -84,6 +91,17 @@ public class CltServiceImpl implements ClientServiceImpl{
 		
 		log.info("listProduit-------"+listProduit);
 		return listProduit;
+	}
+
+	@Override
+	public void updateIncomesFromClients() {
+		try {
+			batchLauncher.run();
+		} catch (JobParametersInvalidException | JobExecutionAlreadyRunningException | JobRestartException
+				| JobInstanceAlreadyCompleteException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	

@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
+import lombok.extern.slf4j.Slf4j;
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.Produit;
 import tn.esprit.spring.repositories.ClientRepository;
 import tn.esprit.spring.services.client.ClientServiceImpl;
 
 @CrossOrigin(origins = "http://localhost:4200")
+@Slf4j
 @RestController
 @RequestMapping("/client")
 @Api(tags = "Client managment")
@@ -78,6 +80,14 @@ public class ClientRestController {
 	@ResponseBody
 	public List<Produit> purchaseHistoryClient(@PathVariable("client-id") Long clientId) {
 		return clientService.purchaseHistory(clientId);
+	}
+	
+	@PutMapping("/update-incomes-from-clients")
+	@ResponseBody
+	public void updateIncomesFromClients() {
+		log.info("update-incomes-from-clients in service");
+		clientService.updateIncomesFromClients();
+		
 	}
 
 }

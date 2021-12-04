@@ -24,4 +24,6 @@ public interface ClientServiceImpl {
 	float incomeFromClient(Long idClient);
 
 	List<Produit> purchaseHistory(Long idClient);
+	
+	void updateIncomesFromClients();
 }
