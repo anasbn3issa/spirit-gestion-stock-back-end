@@ -1,6 +1,7 @@
 package tn.esprit.spring.services.livraison;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import tn.esprit.spring.entities.Livraison;
@@ -17,4 +18,5 @@ public interface LivraisonServiceImpl {
 
 	Livraison retrieveLivraison(Long id);
 	
+	List<Object[]> getLivraisonsCountbyLivId(Long id);	
 }

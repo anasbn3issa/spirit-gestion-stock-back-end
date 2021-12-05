@@ -16,6 +16,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
@@ -32,7 +34,6 @@ import lombok.experimental.FieldDefaults;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Livraison implements Serializable{
@@ -59,6 +60,7 @@ public class Livraison implements Serializable{
 	
 	@Temporal(TemporalType.DATE)
 	Date dateLivraison;
+	
 	
 	@NotNull
 	@OneToOne

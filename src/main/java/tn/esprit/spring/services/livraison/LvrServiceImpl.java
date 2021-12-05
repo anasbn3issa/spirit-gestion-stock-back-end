@@ -3,6 +3,7 @@ package tn.esprit.spring.services.livraison;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,7 @@ public class LvrServiceImpl implements LivraisonServiceImpl {
 		LocalDateTime ldt = LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault());
 		Date to = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
 		Date from = Date.from(ldt.plusDays(2).atZone(ZoneId.systemDefault()).toInstant());
+		l.setDateLivraison(to);
 		l.setDateLivraisonPrevue(from);
 		return livraisonRepository.save(l);
 	}
@@ -67,6 +69,12 @@ public class LvrServiceImpl implements LivraisonServiceImpl {
 	public Livraison retrieveLivraison(Long id) {
 		// TODO Auto-generated method stub
 		return livraisonRepository.findById(id).orElse(null);
+	}
+
+	@Override
+	public List<Object[]> getLivraisonsCountbyLivId(Long id) {
+		// TODO Auto-generated method stub
+		return livraisonRepository.getLivraisonsCountbyLivId(id);
 	}
 	
 }
