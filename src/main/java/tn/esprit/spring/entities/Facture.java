@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
@@ -22,10 +23,10 @@ import lombok.experimental.FieldDefaults;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Facture implements Serializable{
+	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	Long idFacture; // Clé primaire
@@ -41,9 +42,11 @@ public class Facture implements Serializable{
 	@NotNull
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="facture")
 	Set<DetailFacture> factDetails;
+	
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="idClient")
+	@JsonIgnore
     Client client;
 	
 }

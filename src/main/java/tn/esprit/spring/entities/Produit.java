@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
@@ -50,6 +51,7 @@ public class Produit implements Serializable{
     private Rayon rayon;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="produit")
+	@JsonIgnore
 	private Set<DetailFacture> factDetails;
 	
 	@NotNull

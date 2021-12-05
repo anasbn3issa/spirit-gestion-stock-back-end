@@ -3,6 +3,7 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
@@ -19,10 +20,10 @@ import lombok.experimental.FieldDefaults;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DetailFacture implements Serializable{
+	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	Long idDetailFacture; // Clé primaire
@@ -41,6 +42,7 @@ public class DetailFacture implements Serializable{
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="idFacture")
+	@JsonIgnore
     private Facture facture;
 	
 }
