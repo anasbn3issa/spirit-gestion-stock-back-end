@@ -21,7 +21,6 @@ import lombok.experimental.FieldDefaults;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DetailProduit implements Serializable{
@@ -37,6 +36,7 @@ public class DetailProduit implements Serializable{
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	CategorieProduit categorieProduit;
+	
 	@JsonIgnore
 	@NotNull
 	@OneToOne(mappedBy = "detailProduit")
