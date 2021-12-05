@@ -6,6 +6,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import org.springframework.scheduling.annotation.EnableScheduling;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
@@ -25,6 +27,7 @@ import lombok.experimental.FieldDefaults;
 @ToString
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@EnableScheduling
 public class Facture implements Serializable{
 	
 	@Id
