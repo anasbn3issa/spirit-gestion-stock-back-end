@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
@@ -31,8 +32,9 @@ public class Rayon implements Serializable{
 	String code;
 	@NotNull
 	String libelle;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="rayon")
+
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="rayon", fetch = FetchType.LAZY)
 	Set<Produit> produits;
 	
 }

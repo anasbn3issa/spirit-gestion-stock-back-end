@@ -20,8 +20,11 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
 @Entity
-@Data
 @NoArgsConstructor
 @Table( name = "Client")
 public class Client implements Serializable{
@@ -41,10 +44,9 @@ public class Client implements Serializable{
 	private Profession profession;
 	@Enumerated(EnumType.STRING)
 	private CategorieClient categorieClient;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="client")
 	@JsonIgnore
-	private Set<Facture> factures;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="client", fetch = FetchType.LAZY)
+	Set<Facture> factures;
 	
 	
 }

@@ -36,6 +36,7 @@ public class DetailProduit implements Serializable{
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	CategorieProduit categorieProduit;
+	
 	@JsonIgnore
 	@NotNull
 	@OneToOne(mappedBy = "detailProduit")
