@@ -38,15 +38,15 @@ public class ClientBatchConfig {
 	private static final String JOB_NAME = "listClientJob";
 	private static final String STEP_NAME = "processingStep";
 	private static final String READER_NAME = "clientItemReader";
+	private static final String delimiter = "";
 
-	private String names = "nom,prenom,email,password,photo,IncomeInTheLast24h,dateNaissance,profession,categorieClient";
+	private String names = "nom,prenom,email,photo,IncomeInTheLast24h,dateNaissance,profession,categorieClient";
 
 	private static final String QUERY_FIND_CLIENTS =
             "SELECT " +
                     "nom, " +
                     "prenom, " +
                     "email," +
-                    "password," +
                     "photo," +
                     "IncomeInTheLast24h," +
                     "dateNaissance," +
@@ -113,22 +113,21 @@ public class ClientBatchConfig {
 			data.setNom(fieldSet.readString(0));
 			data.setPrenom(fieldSet.readString(1));
 			data.setEmail(fieldSet.readString(2));
-			data.setPassword(fieldSet.readString(3));
-			data.setPhoto(fieldSet.readString(4));
-			data.setIncomeInTheLast24h(fieldSet.readFloat(5));
+			data.setPhoto(fieldSet.readString(3));
+			data.setIncomeInTheLast24h(fieldSet.readFloat(4));
 
 			try {
-				data.setDateNaissance(new SimpleDateFormat("dd/MM/yyyy").parse(fieldSet.readString(6)));
+				data.setDateNaissance(new SimpleDateFormat("dd/MM/yyyy").parse(fieldSet.readString(5)));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			data.setProfession(Profession.valueOf(fieldSet.readString(7)));
-			data.setCategorieClient(CategorieClient.valueOf(fieldSet.readString(8)));
+			data.setProfession(Profession.valueOf(fieldSet.readString(6)));
+			data.setCategorieClient(CategorieClient.valueOf(fieldSet.readString(7)));
 			return data;
 		});
 		return defaultLineMapper;
-	}
-*/
+	}*/
+
 	/* 11. étape 2 (ItemProcessor) fait appel à la classe StockProcessor
 	 * qui se charge de modifier la logique des données selon
 	 * nos besoins métiers */

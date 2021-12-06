@@ -22,7 +22,7 @@ public class JDBCPaginationClientJobConfig {
         return new JdbcPagingItemReaderBuilder<Client>()
                 .name("pagingItemReader")
                 .dataSource(dataSource)
-                .pageSize(1)
+                .pageSize(2)
                 .queryProvider(queryProvider)
                 .rowMapper(new BeanPropertyRowMapper<>(Client.class))
                 .build();
@@ -33,7 +33,7 @@ public class JDBCPaginationClientJobConfig {
                 new SqlPagingQueryProviderFactoryBean();
  
         provider.setDataSource(dataSource);
-        provider.setSelectClause("SELECT nom, prenom, email, password, photo, IncomeInTheLast24h, dateNaissance, profession, categorieClient");
+        provider.setSelectClause("SELECT nom, prenom, email, photo, IncomeInTheLast24h, dateNaissance, profession, categorieClient");
         provider.setFromClause("FROM clients");
  
         return provider;

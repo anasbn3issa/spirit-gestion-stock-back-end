@@ -31,18 +31,15 @@ public class Client implements Serializable{
 	private String nom;
 	private String prenom;
 	private String email;
-	@JsonIgnore
-	private String password;
+	/*@JsonIgnore
+	private String password;*/
 	private String photo;
 	private float IncomeInTheLast24h;
 	@Temporal(TemporalType.DATE)
-	@JsonIgnore
 	private Date dateNaissance;
 	@Enumerated(EnumType.STRING)
-	@JsonIgnore
 	private Profession profession;
 	@Enumerated(EnumType.STRING)
-	@JsonIgnore
 	private CategorieClient categorieClient;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="client")
