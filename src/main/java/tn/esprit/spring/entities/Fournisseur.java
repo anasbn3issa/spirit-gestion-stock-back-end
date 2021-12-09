@@ -30,5 +30,8 @@ public class Fournisseur implements Serializable{
 	String code;
 	@NotNull
 	String libelle;
+	@NotNull
+	String email;
+	
 	
 }

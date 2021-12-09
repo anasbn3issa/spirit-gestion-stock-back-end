@@ -1,11 +1,11 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
@@ -24,16 +24,32 @@ import lombok.experimental.FieldDefaults;
 @ToString
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Rayon implements Serializable{
+
+public class Reclamation implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	Long idRayon; // Clé primaire
+	Long idRec; // Clé primaire
 	@NotNull
-	String code;
-	@NotNull
-	String libelle;
+	String description;
 	
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="rayon", fetch = FetchType.LAZY)
-	Set<Produit> produits;
+	@NotNull
+	String status;
+	
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	Date dateCreation;
+	
+	@NotNull
+	@Temporal(TemporalType.DATE)
+	Date dateResolution;
+	
+	@NotNull
+	String TypeReclamation;
+	
+	@NotNull
+	@ManyToOne
+    @JoinColumn(name="idProduit")
+    private Produit produit;
+	
 }
+	
