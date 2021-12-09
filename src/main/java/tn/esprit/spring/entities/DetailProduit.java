@@ -16,11 +16,11 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
-
+@Getter
+@Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DetailProduit implements Serializable{
@@ -36,41 +36,9 @@ public class DetailProduit implements Serializable{
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	CategorieProduit categorieProduit;
+	
 	@JsonIgnore
 	@NotNull
 	@OneToOne(mappedBy = "detailProduit")
     Produit produit;
-	
-	public Long getIdDetailProduit() {
-		return idDetailProduit;
-	}
-	public void setIdDetailProduit(Long idDetailProduit) {
-		this.idDetailProduit = idDetailProduit;
-	}
-	public Date getDateCreation() {
-		return dateCreation;
-	}
-	public void setDateCreation(Date dateCreation) {
-		this.dateCreation = dateCreation;
-	}
-	public Date getDateDernièreModification() {
-		return dateDernièreModification;
-	}
-	public void setDateDernièreModification(Date dateDernièreModification) {
-		this.dateDernièreModification = dateDernièreModification;
-	}
-	public CategorieProduit getCategorieProduit() {
-		return categorieProduit;
-	}
-	public void setCategorieProduit(CategorieProduit categorieProduit) {
-		this.categorieProduit = categorieProduit;
-	}
-	public Produit getProduit() {
-		return produit;
-	}
-	public void setProduit(Produit produit) {
-		this.produit = produit;
-	}
-	
-	
 }

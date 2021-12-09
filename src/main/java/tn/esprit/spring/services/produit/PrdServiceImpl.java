@@ -41,8 +41,15 @@ public class PrdServiceImpl implements ProduitServiceImpl{
 		p.setRayon(rynServiceImpl.retrieveRayon(idRayon));
 		p.setStock(stkServiceImpl.retrieveStock(idStock));
 		
+		Date date = new Date(System.currentTimeMillis());
+
 		DetailProduit dp = p.getDetailProduit();
+
 		dp.setDateCreation(new Date());
+
+		dp.setDateDernièreModification(date);
+		
+
 		dp.setProduit(p);
 		detProdServiceImpl.addProdDetail(dp);
 		return produitRepository.save(p);

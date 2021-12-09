@@ -22,7 +22,6 @@ import lombok.experimental.FieldDefaults;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Facture implements Serializable{
@@ -39,7 +38,7 @@ public class Facture implements Serializable{
 	@NotNull
 	boolean active;
 	@NotNull
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="facture")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="facture", fetch = FetchType.LAZY)
 	Set<DetailFacture> factDetails;
 	@NotNull
 	@ManyToOne
