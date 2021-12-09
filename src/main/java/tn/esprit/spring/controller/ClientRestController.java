@@ -89,5 +89,6 @@ public class ClientRestController {
 		clientService.updateIncomesFromClients();
 		
 	}
+	
 
 }
