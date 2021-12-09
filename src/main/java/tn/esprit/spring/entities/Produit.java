@@ -38,6 +38,8 @@ public class Produit implements Serializable{
 	String libelle;
 	@NotNull
 	float prixUnitaire;
+	@NotNull
+	int Promotion;
 	
 	@JsonIgnore
 	@NotNull
