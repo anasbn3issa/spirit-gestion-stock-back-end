@@ -54,21 +54,28 @@
 		</dependency>
 
 		<dependency>
-
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
+			<artifactId>spring-boot-starter-batch</artifactId>
 		</dependency>
-
-    <dependency>
-		<groupId>com.github.librepdf</groupId>
-		<artifactId>openpdf</artifactId>
-		<version>1.3.8</version>
-	</dependency>
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.librepdf</groupId>
+			<artifactId>openpdf</artifactId>
+			<version>1.3.8</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.google.zxing</groupId>
@@ -86,17 +93,23 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
-
-    <dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-config</artifactId>
-	</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 		</dependency>
 
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

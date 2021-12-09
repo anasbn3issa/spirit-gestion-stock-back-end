@@ -28,7 +28,6 @@ public class Produit implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	Long idProduit; // Clé primaire
-	@JsonIgnore
 	@NotNull
 	@OneToOne
     @JoinColumn(name = "idDetailProduit")
@@ -39,11 +38,12 @@ public class Produit implements Serializable{
 	String libelle;
 	@NotNull
 	float prixUnitaire;
+	@NotNull
+	int Promotion;
 	
 	@JsonIgnore
 	@NotNull
 	@ManyToOne
-	@JsonIgnore
 	@JoinColumn(name="idStock")
     private Stock stock;
 	
@@ -54,14 +54,9 @@ public class Produit implements Serializable{
     private Rayon rayon;
 	
 	@JsonIgnore
-<<<<<<< HEAD
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="produit")
-=======
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="produit", fetch = FetchType.LAZY)
->>>>>>> 05b449583f0f50f76b59ca1759fead7347796280
 	private Set<DetailFacture> factDetails;
 	
-	@JsonIgnore
 	@NotNull
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Fournisseur> fournisseurs;
