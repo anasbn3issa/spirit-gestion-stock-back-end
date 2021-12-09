@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
@@ -21,13 +22,13 @@ import lombok.experimental.FieldDefaults;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Produit implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	Long idProduit; // Clé primaire
+	@JsonIgnore
 	@NotNull
 	@OneToOne
     @JoinColumn(name = "idDetailProduit")
@@ -41,17 +42,21 @@ public class Produit implements Serializable{
 	
 	@NotNull
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="idStock")
     private Stock stock;
 	
+	@JsonIgnore
 	@NotNull
 	@ManyToOne
     @JoinColumn(name="idRayon")
     private Rayon rayon;
 	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="produit")
 	private Set<DetailFacture> factDetails;
 	
+	@JsonIgnore
 	@NotNull
 	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Fournisseur> fournisseurs;

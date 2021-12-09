@@ -23,7 +23,6 @@ import lombok.experimental.FieldDefaults;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @Table( name = "Client")
 @FieldDefaults(level = AccessLevel.PRIVATE)
