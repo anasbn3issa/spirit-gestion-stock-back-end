@@ -34,7 +34,6 @@ public class Rayon implements Serializable{
 	String libelle;
 	
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="rayon")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="rayon", fetch = FetchType.LAZY)
 	Set<Produit> produits;
-	
 }

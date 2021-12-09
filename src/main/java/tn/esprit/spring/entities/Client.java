@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
@@ -50,8 +51,8 @@ public class Client implements Serializable{
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	CategorieClient categorieClient;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="client")
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="client", fetch = FetchType.LAZY)
 	Set<Facture> factures;
 	
 	

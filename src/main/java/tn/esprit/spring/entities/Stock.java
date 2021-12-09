@@ -35,8 +35,8 @@ public class Stock implements Serializable{
 	@NotNull
 	String libelleStock;
 	
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="stock")
+	@JsonIgnore 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="stock", fetch = FetchType.LAZY)
 	private Set<Produit> produits;	
 	
 }

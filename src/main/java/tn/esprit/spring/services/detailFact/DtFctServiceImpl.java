@@ -15,29 +15,28 @@ public class DtFctServiceImpl implements DetFactServiceImpl{
 	private DetailFactRepository detailFactRepository;
 
 	@Override
-	public List<DetailFacture> retrieveAllPrdoDetails() {
+	public List<DetailFacture> retrieveAllFctDetails() {
 		return (List<DetailFacture>) detailFactRepository.findAll();
 	}
 
 	@Override
-	public DetailFacture addProdDetail(DetailFacture df) {
-	
+	public DetailFacture addFctDetail(DetailFacture df) {
 		return detailFactRepository.save(df);
 	}
 
 	@Override
-	public void deleteProdDetail(Long id) {
+	public void deleteFctDetail(Long id) {
 		detailFactRepository.deleteById(id);
 		
 	}
 
 	@Override
-	public DetailFacture updateProdDetail(DetailFacture df) {
+	public DetailFacture updateFctDetail(DetailFacture df) {
 		return detailFactRepository.save(df);
 	}
 
 	@Override
-	public DetailFacture retrieveProdDetail(Long id) {
+	public DetailFacture retrieveFctDetail(Long id) {
 		return detailFactRepository.findById(id).orElse(null);
 	}
 	

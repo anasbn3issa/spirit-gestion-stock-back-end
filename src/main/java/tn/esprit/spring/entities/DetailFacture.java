@@ -3,6 +3,7 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
@@ -34,9 +35,11 @@ public class DetailFacture implements Serializable{
 	@NotNull
 	Integer pourcentageRemise;
 	@NotNull
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idProduit")
     private Produit produit;
+	@JsonIgnore
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="idFacture")
