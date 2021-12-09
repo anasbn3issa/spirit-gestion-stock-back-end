@@ -16,8 +16,7 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
-@Getter
-@Setter
+
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -36,6 +35,48 @@ public class Stock implements Serializable{
 	String libelleStock;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="stock")
-	private Set<Produit> produits;	
+	private Set<Produit> produits;
+
+	public Long getIdStock() {
+		return idStock;
+	}
+
+	public void setIdStock(Long idStock) {
+		this.idStock = idStock;
+	}
+
+	public Integer getQte() {
+		return qte;
+	}
+
+	public void setQte(Integer qte) {
+		this.qte = qte;
+	}
+
+	public Integer getQteMin() {
+		return qteMin;
+	}
+
+	public void setQteMin(Integer qteMin) {
+		this.qteMin = qteMin;
+	}
+
+	public String getLibelleStock() {
+		return libelleStock;
+	}
+
+	public void setLibelleStock(String libelleStock) {
+		this.libelleStock = libelleStock;
+	}
+
+	public Set<Produit> getProduits() {
+		return produits;
+	}
+
+	public void setProduits(Set<Produit> produits) {
+		this.produits = produits;
+	}	
+	
+	
 	
 }
