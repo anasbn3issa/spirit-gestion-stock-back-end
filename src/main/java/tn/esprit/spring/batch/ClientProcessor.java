@@ -14,7 +14,7 @@ public class ClientProcessor implements ItemProcessor<Client, Client> {
 	@Override
 	public Client process(Client item) throws Exception {
 		//Client retrievedClient = new Client();
-		item = clientService.retrieveClient(item.getIdClient());
+		/*item = clientService.retrieveClient(item.getIdClient());*/
 		log.info("the client retrieved to calculate revenu :"+item);
 		float incomeFromClient = clientService.incomeFromClient(item.getIdClient());
 		item.setIncomeInTheLast24h(incomeFromClient);
