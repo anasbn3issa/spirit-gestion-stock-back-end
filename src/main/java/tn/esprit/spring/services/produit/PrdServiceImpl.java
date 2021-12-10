@@ -44,8 +44,12 @@ public class PrdServiceImpl implements ProduitServiceImpl{
 		Date date = new Date(System.currentTimeMillis());
 
 		DetailProduit dp = p.getDetailProduit();
+
+		dp.setDateCreation(new Date());
+
 		dp.setDateDernièreModification(date);
-		dp.setDateCreation(date);
+		
+
 		dp.setProduit(p);
 		detProdServiceImpl.addProdDetail(dp);
 		return produitRepository.save(p);
@@ -63,6 +67,7 @@ public class PrdServiceImpl implements ProduitServiceImpl{
 		Date date = new Date(System.currentTimeMillis());
 		dp.setDateDernièreModification(date);
 		p.setDetailProduit(dp);
+		p.getDetailProduit().setCategorieProduit(p.getDetailProduit().getCategorieProduit());
 		return produitRepository.save(p);
 	}
 
@@ -70,5 +75,7 @@ public class PrdServiceImpl implements ProduitServiceImpl{
 	public void deleteProduit(Long id) {
 		produitRepository.deleteById(id);
 	}
+	
+	
 
 }

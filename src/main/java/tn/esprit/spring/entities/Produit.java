@@ -1,4 +1,4 @@
-	package tn.esprit.spring.entities;
+package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -38,6 +38,8 @@ public class Produit implements Serializable{
 	String libelle;
 	@NotNull
 	float prixUnitaire;
+	@NotNull
+	int Promotion;
 	
 	@JsonIgnore
 	@NotNull
