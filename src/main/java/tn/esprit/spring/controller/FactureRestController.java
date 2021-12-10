@@ -44,6 +44,13 @@ public class FactureRestController {
 	return factureService.retrieveAllFacture();
 	}
 	
+	@ApiOperation(value = "Récupérer la liste des factures actives")
+	@GetMapping("/retrieve-open-factures")
+	@ResponseBody
+	public List<Facture> getOpenFactures() {
+	return factureService.getOpenFactures();
+	}
+	
 	@ApiOperation(value = "Récupérer une facture par Id")
 	@GetMapping("/retrieve-facture/{facture-id}")
 	@ResponseBody

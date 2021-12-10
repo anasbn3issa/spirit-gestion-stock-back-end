@@ -29,7 +29,7 @@ public class LivraisonRestController {
 	@Autowired
 	LvrServiceImpl livraisonService;
 	
-	@ApiOperation(value = "Récupérer la liste des livreurs")
+	@ApiOperation(value = "Compter les livraisons par livreur")
 	@GetMapping("/count/{livreur-id}")
 	@ResponseBody
 	public ResponseEntity<List<Object[]>> getlivraisonsCountById(
@@ -56,10 +56,9 @@ public class LivraisonRestController {
 	@ApiOperation(value = "Ajouter une nouvelle livraison")
 	@PostMapping("/add-livraison/{facture-id}/livreur/{livreur-id}")
 	@ResponseBody
-	public Livraison addLivraison(@PathVariable("facture-id") Long factureId, @PathVariable("livreur-id") Long livreurId,
-			@RequestBody Livraison l)
+	public Livraison addLivraison(@PathVariable("facture-id") Long factureId, @PathVariable("livreur-id") Long livreurId)
 	{
-		return livraisonService.addLivraison(l, factureId, livreurId);
+		return livraisonService.addLivraison(factureId, livreurId);
 	}
 	
 	@ApiOperation(value = "Supprimer une livraison par Id")

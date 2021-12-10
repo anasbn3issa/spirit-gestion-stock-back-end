@@ -43,6 +43,5 @@ public class DetailFacture implements Serializable{
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="idFacture")
-    private Facture facture;
-	
+    private Facture facture;	
 }

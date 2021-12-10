@@ -38,11 +38,13 @@ public class Facture implements Serializable{
 	@NotNull
 	boolean active;
 	@NotNull
+	@Enumerated(EnumType.STRING)
+	EtatFacture etat = EtatFacture.Non_payee;
+	@NotNull
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="facture", fetch = FetchType.LAZY)
 	Set<DetailFacture> factDetails;
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="idClient")
     Client client;
-	
 }

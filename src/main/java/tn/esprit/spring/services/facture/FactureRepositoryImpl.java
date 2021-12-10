@@ -157,4 +157,10 @@ public class FactureRepositoryImpl implements FactureRepositoryCustom{
 		return res;
 		
 	}
+
+	@Override
+	public List<Facture> getOpenFactures() {
+		// TODO Auto-generated method stub
+		return facturerepository.getActiveFactures();
+	}
 }
