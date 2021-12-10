@@ -90,5 +90,13 @@ public class ClientRestController {
 		
 	}
 	
+	@PutMapping("/update-categorie-clients")
+	@ResponseBody
+	public void updateCategorieClients() {
+		log.info("update-categorie-clients");
+		clientService.updateCategorieClient();
+
+	}
+	
 
 }

@@ -26,4 +26,7 @@ public interface ClientServiceImpl {
 	List<Produit> purchaseHistory(Long idClient);
 	
 	void updateIncomesFromClients();
+	
+	public void updateCategorieClient();
+
 }

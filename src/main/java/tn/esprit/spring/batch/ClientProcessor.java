@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import lombok.extern.slf4j.Slf4j;
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.services.client.ClientServiceImpl;
+
 @Slf4j
-public class ClientProcessor implements ItemProcessor<Client, Client> {
+public class ClientProcessor implements ItemProcessor<Client,Client > {
 	@Autowired
 	ClientServiceImpl clientService;
 
