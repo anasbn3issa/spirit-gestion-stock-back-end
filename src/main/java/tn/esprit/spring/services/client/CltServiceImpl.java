@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
-import tn.esprit.spring.BatchLauncher;
+//import tn.esprit.spring.BatchLauncher;
+import tn.esprit.spring.DatabaseinputApplication;
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.DetailFacture;
 import tn.esprit.spring.entities.Produit;
@@ -27,7 +28,8 @@ public class CltServiceImpl implements ClientServiceImpl{
 	private ClientRepository clientRepository;
 	
 	@Autowired
-    private BatchLauncher batchLauncher;
+    //private BatchLauncher batchLauncher;
+	private DatabaseinputApplication batchLauncher2;
 	@Override
 	public List<Client> retrieveAllClients() {
 		// TODO Auto-generated method stub
@@ -95,12 +97,13 @@ public class CltServiceImpl implements ClientServiceImpl{
 
 	@Override
 	public void updateIncomesFromClients() {
-		try {
-			batchLauncher.run();
-		} catch (JobParametersInvalidException | JobExecutionAlreadyRunningException | JobRestartException
-				| JobInstanceAlreadyCompleteException e) {
-			e.printStackTrace();
-		}
+			try {
+				batchLauncher2.run();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
 		
 	}
 

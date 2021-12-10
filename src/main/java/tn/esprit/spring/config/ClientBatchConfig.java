@@ -1,4 +1,4 @@
-package tn.esprit.spring.config;
+/*package tn.esprit.spring.config;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,20 +40,12 @@ public class ClientBatchConfig {
 	private static final String READER_NAME = "clientItemReader";
 	private static final String delimiter = "";
 
-	private String names = "nom,prenom,email,photo,IncomeInTheLast24h,dateNaissance,profession,categorieClient";
 
 	private static final String QUERY_FIND_CLIENTS =
             "SELECT " +
                     "nom, " +
                     "prenom, " +
-                    "email," +
-                    "photo," +
-                    "IncomeInTheLast24h," +
-                    "dateNaissance," +
-                    "profession," +
-                    "categorieClient," +
-            "FROM client ";
-	//private String delimiter = ",";
+            "FROM Client";
 
 	@Autowired
 	private JobBuilderFactory jobBuilderFactory;
@@ -62,30 +54,19 @@ public class ClientBatchConfig {
 	private StepBuilderFactory stepBuilderFactory;
 
 
-	/*7 Créer le bean associé au job et le lancer*/
 	@Bean
 	public Job listClientsJob(Step step1) {
 		return jobBuilderFactory.get(JOB_NAME).start(step1).build();
 	}
 
-	/*8 Créer le step associé au job et le lancer*/
 	@Bean
 	public Step stockStep(DataSource dataSource) {
 		return stepBuilderFactory.get(STEP_NAME).<Client, Client>chunk(5).reader(clientItemReader(dataSource))
 				.processor(clientItemProcessor()).writer(clientItemWriter()).build();
 	}
 	
-	/*9. étape 1 (ItemReader) Créer le reader pour récupérer les données depuis
-	 * le fichier csv*/
 	@Bean
 	public ItemReader<Client> clientItemReader(DataSource dataSource) {
-		/*FlatFileItemReader<Client> reader = new FlatFileItemReader<>();
-		reader.setResource(new ClassPathResource(FILE_NAME));
-		reader.setName(READER_NAME);
-		reader.setLinesToSkip(1);
-		/*7. récupérer les données ligne par ligne du fichier excel */
-		/*reader.setLineMapper(clientLineMapper());
-		return reader;*/
 		return new JdbcCursorItemReaderBuilder<Client>()
                 .name("cursorItemReader")
                 .dataSource(dataSource)
@@ -96,52 +77,14 @@ public class ClientBatchConfig {
 
 	}
 
-	
-	/*10. récupérer les données ligne par ligne du fichier excel */
-/*
-	@Bean
-	public LineMapper<Client> clientLineMapper() {
-
-		final DefaultLineMapper<Client> defaultLineMapper = new DefaultLineMapper<>();
-		final DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
-		lineTokenizer.setDelimiter(delimiter);
-		lineTokenizer.setStrict(false);
-		lineTokenizer.setNames(names.split(delimiter));
-		defaultLineMapper.setLineTokenizer(lineTokenizer);
-		defaultLineMapper.setFieldSetMapper(fieldSet -> {
-			Client data = new Client();
-			data.setNom(fieldSet.readString(0));
-			data.setPrenom(fieldSet.readString(1));
-			data.setEmail(fieldSet.readString(2));
-			data.setPhoto(fieldSet.readString(3));
-			data.setIncomeInTheLast24h(fieldSet.readFloat(4));
-
-			try {
-				data.setDateNaissance(new SimpleDateFormat("dd/MM/yyyy").parse(fieldSet.readString(5)));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			data.setProfession(Profession.valueOf(fieldSet.readString(6)));
-			data.setCategorieClient(CategorieClient.valueOf(fieldSet.readString(7)));
-			return data;
-		});
-		return defaultLineMapper;
-	}*/
-
-	/* 11. étape 2 (ItemProcessor) fait appel à la classe StockProcessor
-	 * qui se charge de modifier la logique des données selon
-	 * nos besoins métiers */
 	@Bean
 	public ItemProcessor<Client, Client> clientItemProcessor() {
 		return new ClientProcessor();
 	}
 
-	
-	/* 12. étape 3 (ItemWriter) fait appel à la classe StockWriter
-	 * qui se charge de lancer le service de sauvegarde des 
-	 * données liées à la partie stock dans la BD*/
 	@Bean
 	public ItemWriter<Client> clientItemWriter() {
 		return new ClientWriter();
 	}
 }
+*/
