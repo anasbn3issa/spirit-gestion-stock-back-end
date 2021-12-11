@@ -6,12 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.scheduling.annotation.EnableScheduling;
-
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableScheduling
 @EnableSwagger2
 @SpringBootApplication
+@EnableAspectJAutoProxy
 public class GestionMagasinStockBackendSpiritApplication {
 
 	public static void main(String[] args) {
