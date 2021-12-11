@@ -100,6 +100,8 @@ public class CltServiceImpl implements ClientServiceImpl {
 
 	@Override
 	public void updateIncomesFromClients() {
+		this.updateCategorieClient();
+
 		try {
 			batchLauncher2.run();
 		} catch (Exception e) {

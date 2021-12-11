@@ -35,10 +35,13 @@ public class JobConfiguration {
 	@Autowired
 	private DataSource dataSource;
 	
+	@Autowired
+	private ClientServiceImpl serviceClient;
+	
 	@Bean
 	public JdbcCursorItemReader<Client> cursorItemReader(){
 		JdbcCursorItemReader<Client> reader = new JdbcCursorItemReader<>();
-		reader.setSql("SELECT id_client, nom, prenom, income_in_the_last24h FROM Client");
+		reader.setSql("SELECT id_client, nom, prenom, income_in_the_last24h, date_naissance, email, categorie_client, photo, profession FROM Client");
 		reader.setDataSource(dataSource);
 		reader.setFetchSize(100);
 		reader.setRowMapper(new ClientRowMapper());
@@ -59,7 +62,7 @@ public class JobConfiguration {
 		sortKeys.put("id_client", Order.ASCENDING);
 		
 		MySqlPagingQueryProvider queryProvider = new MySqlPagingQueryProvider();
-		queryProvider.setSelectClause("SELECT id_client, nom, prenom, income_in_the_last24h");
+		queryProvider.setSelectClause("SELECT id_client, nom, prenom, income_in_the_last24h, date_naissance, email, categorie_client, photo, profession");
 		queryProvider.setFromClause("FROM Client");
 		queryProvider.setSortKeys(sortKeys);
 
@@ -74,8 +77,11 @@ public class JobConfiguration {
 	public ItemWriter<Client> clientItemWriter(){
 		return items -> {
 			for(Client c : items) {
-				System.out.println(c.toString());
-				log.info("ItemWriter"+c);
+	        	float itemIncome=serviceClient.incomeFromClient(c.getIdClient());
+
+				c.setIncomeInTheLast24h(itemIncome);
+				serviceClient.updateClient(c);
+				log.info("ItemWriter--------"+c);
 			}
 		};
 	}

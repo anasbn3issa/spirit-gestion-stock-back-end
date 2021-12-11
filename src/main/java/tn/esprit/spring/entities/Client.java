@@ -40,13 +40,16 @@ public class Client implements Serializable{
 	private float IncomeInTheLast24h;
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
-	@Enumerated(EnumType.STRING)
-	private Profession profession;
+	//@Enumerated(EnumType.STRING)
+	//private Profession profession;
+	private String profession;
 	@Enumerated(EnumType.STRING)
 	private CategorieClient categorieClient;
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="client", fetch = FetchType.LAZY)
 	Set<Facture> factures;
+	
+	
 	
 	
 }
