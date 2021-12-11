@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
@@ -21,7 +22,6 @@ import lombok.experimental.FieldDefaults;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Rayon implements Serializable{
@@ -33,6 +33,8 @@ public class Rayon implements Serializable{
 	@NotNull
 	String libelle;
 	
+    
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="rayon")
 	Set<Produit> produits;
 	

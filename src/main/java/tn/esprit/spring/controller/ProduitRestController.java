@@ -2,6 +2,7 @@ package tn.esprit.spring.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.Produit;
 import tn.esprit.spring.services.produit.PrdServiceImpl;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @Api(tags = "Product management")
 @RequestMapping("/product")
@@ -38,6 +42,7 @@ public class ProduitRestController {
 	@ApiOperation(value = "Récupérer un produit par Id")
 	@GetMapping("/retrieve-product/{product-id}")
 	@ResponseBody
+	@JsonIgnore
 	public Produit retrieveClient(@PathVariable("product-id") Long productId) {
 	return productService.retrieveProduit(productId);
 	}
