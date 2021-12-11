@@ -1,6 +1,5 @@
 package tn.esprit.spring.services.detailProd;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,21 +14,7 @@ public class DtPrdServiceImpl implements DetProdServiceImpl{
 	@Autowired
 	private DetailProdRepository detailProdRepository;
 
-	@Override
-	public List<DetailProduit> retrieveAllPrdoDetails() {
-		// TODO Auto-generated method stub
-		return (List<DetailProduit>) detailProdRepository.findAll();
-	}
-
-	@Override
-	public DetailProduit addProdDetail(DetailProduit c) {
-		// TODO Auto-generated method stub
-		Date date = new Date(System.currentTimeMillis());
-		c.setDateCreation(date);
-		c.setDateDernièreModification(date);
-
-		return detailProdRepository.save(c);
-	}
+		
 
 	@Override
 	public void deleteProdDetail(Long id) {
@@ -48,6 +33,20 @@ public class DtPrdServiceImpl implements DetProdServiceImpl{
 		// TODO Auto-generated method stub
 		return detailProdRepository.findById(id).orElse(null);
 	}
+
+	@Override
+	public List<DetailProduit> retrieveAllPrdoDetails() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DetailProduit addProdDetail(DetailProduit c) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 	
 
 }

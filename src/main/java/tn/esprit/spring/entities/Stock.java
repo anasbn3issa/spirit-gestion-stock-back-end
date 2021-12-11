@@ -32,12 +32,10 @@ public class Stock implements Serializable{
 	Integer qte;
 	@NotNull
 	Integer qteMin;
-	
-	
 	@NotNull
 	String libelleStock;
-	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER ,mappedBy="stock")
+	@JsonIgnore 
 	private Set<Produit> produits;	
 	
 }

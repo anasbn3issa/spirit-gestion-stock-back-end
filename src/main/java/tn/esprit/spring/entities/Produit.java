@@ -1,4 +1,4 @@
-	package tn.esprit.spring.entities;
+package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -38,6 +38,8 @@ public class Produit implements Serializable{
 	String libelle;
 	@NotNull
 	float prixUnitaire;
+	@NotNull
+	int Promotion;
 	
 	@NotNull
 	@ManyToOne
@@ -45,16 +47,18 @@ public class Produit implements Serializable{
 	@JoinColumn(name="idStock")
     private Stock stock;
 	
+	@JsonIgnore
 	@NotNull
 	@ManyToOne
     @JoinColumn(name="idRayon")
     private Rayon rayon;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="produit")
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="produit", fetch = FetchType.LAZY)
 	private Set<DetailFacture> factDetails;
 	
 	@NotNull
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Fournisseur> fournisseurs;
 	
 }

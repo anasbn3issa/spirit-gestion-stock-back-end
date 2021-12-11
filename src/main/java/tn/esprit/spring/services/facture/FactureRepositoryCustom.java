@@ -1,7 +1,9 @@
 package tn.esprit.spring.services.facture;
 
+import java.util.Date;
 import java.util.List;
 
+import tn.esprit.spring.entities.CategorieClient;
 import tn.esprit.spring.entities.Facture;
 
 
@@ -9,7 +11,7 @@ public interface FactureRepositoryCustom {
 	
 	List<Facture> retrieveAllFacture();
 
-	Facture addFacture(Facture f);
+	Facture addFacture(Facture f, Long idClient);
 
 	void deleteFacture(Long id);
 
@@ -18,5 +20,14 @@ public interface FactureRepositoryCustom {
 	Facture retrieveFacture(Long id);
 	
 	void cancelFacture(Long id);
+	
+	List<Facture> retrieveFacturesByDates(Date date1, Date date2);
+	
+	List<Facture> getFacturesByClient(Long idClient);
+	
+	public float getChiffreAffaireParCategorieClient(CategorieClient categorieClient, Date startDate, Date endDate);
+	
+	float getRevenuBrutProduit(Long idProduit, Date startDate, Date endDate);
+
 
 }
