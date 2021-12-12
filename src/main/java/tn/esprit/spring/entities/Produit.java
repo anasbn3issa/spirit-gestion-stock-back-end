@@ -41,9 +41,9 @@ public class Produit implements Serializable{
 	@NotNull
 	int Promotion;
 	
-	@JsonIgnore
 	@NotNull
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="idStock")
     private Stock stock;
 	

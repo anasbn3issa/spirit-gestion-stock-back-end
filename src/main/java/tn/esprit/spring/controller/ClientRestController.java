@@ -21,10 +21,10 @@ import tn.esprit.spring.entities.Produit;
 import tn.esprit.spring.repositories.ClientRepository;
 import tn.esprit.spring.services.client.ClientServiceImpl;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 @RestController
 @RequestMapping("/client")
+@CrossOrigin(origins = "http://localhost:4200")
 @Api(tags = "Client managment")
 public class ClientRestController {
 

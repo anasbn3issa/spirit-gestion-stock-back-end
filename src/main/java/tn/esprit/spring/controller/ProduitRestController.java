@@ -6,8 +6,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,16 +19,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.zxing.WriterException;
 import com.lowagie.text.DocumentException;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entities.Produit;
 import tn.esprit.spring.services.produit.ExportToPDF;
 import tn.esprit.spring.services.produit.PrdServiceImpl;
-
 import org.springframework.ui.Model;
 import java.util.Base64;
 
@@ -52,6 +50,7 @@ public class ProduitRestController {
 	@ApiOperation(value = "Récupérer un produit par Id")
 	@GetMapping("/retrieve-product/{product-id}")
 	@ResponseBody
+	@JsonIgnore
 	public Produit retrieveClient(@PathVariable("product-id") Long productId) {
 	return productService.retrieveProduit(productId);
 	}
