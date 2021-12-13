@@ -45,7 +45,7 @@ public class FactureRepositoryImpl implements FactureRepositoryCustom{
 	
 	@Autowired
 	private DetailFactRepository detailFactRepository;
-	private ClientServiceImpl clientService;
+
 	@Autowired
 	private DetFactServiceImpl detailFactureService;
 
@@ -82,7 +82,7 @@ public class FactureRepositoryImpl implements FactureRepositoryCustom{
 		
 		for(DetailFacture df : f.getFactDetails()) {
 			df.setFacture(f);
-			detailFactureService.addProdDetail(df);
+			detailFactureService.addFctDetail(df);
 		}
 
 		return f;
@@ -114,7 +114,7 @@ public class FactureRepositoryImpl implements FactureRepositoryCustom{
 
 	@Override
 	public List<Facture> retrieveFacturesByDates(Date date1, Date date2) {
-		return facturerepository.retrieveFacturesByDates(date1, date2);
+		return factureRepository.retrieveFacturesByDates(date1, date2);
 	}
 	
 	@Scheduled(cron = "0 0 0 1 * *" )
@@ -139,7 +139,7 @@ public class FactureRepositoryImpl implements FactureRepositoryCustom{
 
 	@Override
 	public List<Facture> getFacturesByClient(Long idClient) {
-		return facturerepository.getFacturesByClient(idClient);
+		return factureRepository.getFacturesByClient(idClient);
 	}
 
 /*
@@ -156,7 +156,7 @@ public class FactureRepositoryImpl implements FactureRepositoryCustom{
 
 	@Override
 	public float getChiffreAffaireParCategorieClient(CategorieClient categorieClient, Date startDate, Date endDate) {
-		return facturerepository.getChiffreAffaireParCategorieClient(categorieClient, startDate, endDate);
+		return factureRepository.getChiffreAffaireParCategorieClient(categorieClient, startDate, endDate);
 	}
 
 	@Override
@@ -176,22 +176,6 @@ public class FactureRepositoryImpl implements FactureRepositoryCustom{
 		
 	}
 
-	@Override
-	public float getProgressionEntreprise(Date startDate, Date endDate) {
-		List<Facture> factures= factureRepository.retrieveFacturesDansIntervalle(startDate, endDate);
-		
-		float progression = 0;
-		
-		for(Facture f : factures) {
-			progression = progression + f.getMontantFacture();
-		}
-		
-		return progression;
-	}
-
-	@Override	
-	@Scheduled(cron = "0 0 0 1 * *" )
-	public void getPr
 	@Override
 	public float getProgressionEntreprise(Date startDate, Date endDate) {
 		List<Facture> factures= factureRepository.retrieveFacturesDansIntervalle(startDate, endDate);
