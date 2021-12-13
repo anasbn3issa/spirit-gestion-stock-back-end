@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -41,9 +42,18 @@ public class LivreurRestController {
 	@ResponseBody
 	public ResponseEntity<HashMap<String,Object>> getlivraisons(
 			 @RequestParam(defaultValue = "0") Integer pageNo, 
-             @RequestParam(defaultValue = "8") Integer pageSize
+             @RequestParam(defaultValue = "8") Integer pageSize,
+             @RequestParam(required = false) String filter
 	) {
-	    return new ResponseEntity<>(livreurService.livreurspagination(pageNo, pageSize), HttpStatus.OK);
+	    return new ResponseEntity<>(livreurService.livreurspagination(pageNo, pageSize, filter), HttpStatus.OK);
+		//return ResponseEntity.ok().;
+	}
+	
+	@ApiOperation(value = "Récupérer la liste des livreurs actifs")
+	@GetMapping("/retrieve-active-livreurs")
+	@ResponseBody
+	public ResponseEntity<List<Livreur>> getActivelivreur() {
+	    return new ResponseEntity<>(livreurService.retrieveActiveLivreurs(), HttpStatus.OK);
 		//return ResponseEntity.ok().;
 	}
 	
@@ -52,7 +62,6 @@ public class LivreurRestController {
 	@ResponseBody
 	public ResponseEntity<HashMap<String,Object>> modifyClient(@RequestBody List<Long> ids) {
 		log.info("Mettre a jour la liste des livreurs...");
-		log.info(ids.toString());
 
 	    return new ResponseEntity<>(livreurService.disableLivreursWithIds(ids), HttpStatus.OK);
 	}

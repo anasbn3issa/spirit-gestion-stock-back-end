@@ -177,6 +177,11 @@ public class FactureRepositoryImpl implements FactureRepositoryCustom{
 	}
 
 	@Override
+	public List<Facture> getOpenFactures() {
+		// TODO Auto-generated method stub
+		return factureRepository.getActiveFactures();
+	}
+	
 	public float getProgressionEntreprise(Date startDate, Date endDate) {
 		List<Facture> factures= factureRepository.retrieveFacturesDansIntervalle(startDate, endDate);
 		
@@ -198,7 +203,4 @@ public class FactureRepositoryImpl implements FactureRepositoryCustom{
 		System.out.println("Progression actuelle : " + prog);
 		
 	}
-	
-	
-
 }

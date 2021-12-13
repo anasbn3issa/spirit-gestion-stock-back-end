@@ -69,7 +69,7 @@ public class Livreur implements Serializable{
 	Date dateAdhesion;
 
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="livreur", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="livreur", fetch = FetchType.EAGER)
 	private Set<Livraison> livraisonList;
 
 }

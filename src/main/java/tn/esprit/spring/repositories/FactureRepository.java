@@ -26,10 +26,12 @@ public interface FactureRepository extends CrudRepository<Facture, Long> {
 	
 	@Query("SELECT SUM(f.montantFacture) FROM Facture f WHERE f.client.categorieClient = ?1 AND (f.dateFacture BETWEEN ?2 AND ?3)")
 	public float getChiffreAffaireParCategorieClient(CategorieClient categorieClient, Date startDate, Date endDate);
+	
+	@Query("SELECT f FROM Facture f WHERE f.active=true AND f.etat= 'Non_payee'")
+	List<Facture> getActiveFactures();
 
 	@Query("SELECT f FROM Facture f WHERE f.dateFacture BETWEEN :startDate AND :endDate")
 	List<Facture> retrieveFacturesDansIntervalle(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 	
 	Facture findFirstByOrderByDateFactureAsc();
-
 }

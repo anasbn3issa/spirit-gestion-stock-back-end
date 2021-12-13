@@ -26,6 +26,8 @@ public interface FactureRepositoryCustom {
 	List<Facture> getFacturesByClient(Long idClient);
 	
 	float getRevenuBrutProduit(Long idProduit, Date startDate, Date endDate);
+	
+	List<Facture> getOpenFactures();
 
 	float getChiffreAffaireParCategorieClient(CategorieClient categorieClient, Date startDate, Date endDate);
 	
