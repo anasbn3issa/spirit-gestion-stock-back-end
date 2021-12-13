@@ -1,13 +1,13 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Set;
-
 import javax.persistence.*;
 
+<<<<<<< HEAD
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+=======
+>>>>>>> 66ef63ae7942ba133d009bc096dbc2ec80489f84
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
@@ -28,30 +28,29 @@ import lombok.experimental.FieldDefaults;
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EnableScheduling
-public class Facture implements Serializable{
+public class DetailFacture implements Serializable{
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	Long idFacture; // Clé primaire
+	Long idDetailFacture; // Clé primaire
+	@NotNull
+	float prixTotal;
 	@NotNull
 	float montantRemise;
 	@NotNull
-	float montantFacture;
+	Integer qte;
 	@NotNull
-	@Temporal(TemporalType.DATE)
-	Date dateFacture;
+	Integer pourcentageRemise;
 	@NotNull
-	boolean active;
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	EtatFacture etat = EtatFacture.Non_payee;
-	@NotNull
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="facture", fetch = FetchType.LAZY)
-	Set<DetailFacture> factDetails;
-	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="idProduit")
+    private Produit produit;
+	@JsonIgnore
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name="idClient")
+	@JoinColumn(name="idFacture")
 	@JsonIgnore
-    Client client;
+    private Facture facture;
+	
 }

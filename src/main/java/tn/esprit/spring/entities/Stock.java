@@ -34,9 +34,8 @@ public class Stock implements Serializable{
 	Integer qteMin;
 	@NotNull
 	String libelleStock;
-	
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER ,mappedBy="stock")
 	@JsonIgnore 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="stock", fetch = FetchType.LAZY)
 	private Set<Produit> produits;	
 	
 }

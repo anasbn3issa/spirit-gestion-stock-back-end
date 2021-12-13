@@ -3,6 +3,8 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.scheduling.annotation.EnableScheduling;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
@@ -22,7 +24,9 @@ import lombok.experimental.FieldDefaults;
 @ToString
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@EnableScheduling
 public class DetailFacture implements Serializable{
+	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	Long idDetailFacture; // Clé primaire
@@ -35,13 +39,12 @@ public class DetailFacture implements Serializable{
 	@NotNull
 	Integer pourcentageRemise;
 	@NotNull
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idProduit")
     private Produit produit;
-	@JsonIgnore
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name="idFacture")
-    private Facture facture;	
-}
+	@JoinColumn(name="idFacture")	
+	@JsonIgnore
+    private Facture facture;
+	}

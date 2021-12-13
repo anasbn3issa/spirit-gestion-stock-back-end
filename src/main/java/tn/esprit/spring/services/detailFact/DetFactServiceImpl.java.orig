@@ -16,8 +16,12 @@ public interface DetFactServiceImpl {
 
 	DetailFacture updateFctDetail(DetailFacture df);
 
-	DetailFacture retrieveFctDetail(Long id);
+<<<<<<< HEAD
+	DetailFacture retrieveProdDetail(Long id);
 	
 	float getRevenuBrutProduit(Long idProduit, Date startDate, Date endDate);
+=======
+	DetailFacture retrieveFctDetail(Long id);
+>>>>>>> 66ef63ae7942ba133d009bc096dbc2ec80489f84
 
 }

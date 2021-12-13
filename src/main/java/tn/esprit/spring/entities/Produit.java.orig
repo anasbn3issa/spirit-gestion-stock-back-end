@@ -53,8 +53,13 @@ public class Produit implements Serializable{
     @JoinColumn(name="idRayon")
     private Rayon rayon;
 	
+<<<<<<< HEAD
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="produit")
+	@JsonIgnore
+=======
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="produit", fetch = FetchType.LAZY)
+>>>>>>> 66ef63ae7942ba133d009bc096dbc2ec80489f84
 	private Set<DetailFacture> factDetails;
 	
 	@NotNull
