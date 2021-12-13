@@ -162,7 +162,7 @@ public class StkServiceImpl implements StockServiceImpl{
 	
 	
 	//BILAN MENSUEL
-	//@Scheduled(cron = "* * * */31 * *" )
+	//@Scheduled(cron = "0 0 1 * * *" )
 	@Scheduled(cron = "*/10 * * * * *" )
 	@Override
 	public Stock StockPlusRentable() {
@@ -180,7 +180,7 @@ public class StkServiceImpl implements StockServiceImpl{
 		return s;
 	}
 	
-	@Scheduled(cron = "* * * */31 * *" )
+	@Scheduled(cron = "0 0 1 * * *" )
 	@Override
 	public Stock moinsRentable() {
 		List <Stock> list = this.retrieveAllStock();
