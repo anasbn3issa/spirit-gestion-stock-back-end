@@ -30,13 +30,25 @@ public interface LivraisonRepository extends PagingAndSortingRepository<Livraiso
 			+ "GROUP BY liv.etat")
 	List<Object[]> getLivraisonsCountbyLivId(Long id);
 	
+	@Query("SELECT liv "
+			+ "FROM Livraison liv "
+			+ "WHERE liv.livreur.idLivreur = ?1 ")
+	List<Livraison> getLivraisonsbyLivId(Long id);
+	
 	@Query("SELECT count(l.idLivraison) FROM Livraison l")
 	Long retrieveLivraisonCount();
 	
 	@Query("SELECT l FROM Livraison l WHERE "
-			+ "lower(l.livreur.nom) LIKE lower(concat('%', ?1,'%')) "
+			+ "lower(l.code) LIKE lower(concat('%', ?1,'%')) "
+			+ "OR lower(l.livreur.nom) LIKE lower(concat('%', ?1,'%')) "
+			+ "OR lower(concat(l.facture.client.prenom,l.facture.client.nom)) LIKE lower(concat('%', ?1,'%')) "
 			+ "OR lower(l.etat) LIKE lower(concat('%', ?1,'%')) "
 			+ "OR l.dateLivraisonPrevue LIKE %?1%"
 			+ "OR l.dateLivraison LIKE %?1%")
 	Page<Livraison> filterLivraisonList(String filter, Pageable pageable);
+	
+
+	@Query(value = "SELECT MAX(l.id_livraison) FROM livraison l", 
+			  nativeQuery = true)
+	Long getLastInsertedId();
 }

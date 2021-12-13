@@ -11,8 +11,8 @@ public interface LivraisonServiceImpl {
 	
 	Livraison addLivraison(Long factureId, Long LivreurId);
 
-	void deleteLivraison(Long id);
-
+	HashMap<String,Object> deleteLivraison(Long id);
+	
 	Livraison updateLivraison(Livraison l);
 
 	Livraison retrieveLivraison(Long id);

@@ -62,7 +62,6 @@ public class LivreurRestController {
 	@ResponseBody
 	public ResponseEntity<HashMap<String,Object>> modifyClient(@RequestBody List<Long> ids) {
 		log.info("Mettre a jour la liste des livreurs...");
-		log.info(ids.toString());
 
 	    return new ResponseEntity<>(livreurService.disableLivreursWithIds(ids), HttpStatus.OK);
 	}
