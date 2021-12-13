@@ -7,7 +7,7 @@ import tn.esprit.spring.entities.Facture;
 import tn.esprit.spring.entities.CategorieClient;
 
 
-public interface FactureService {
+public interface FactureRepositoryCustom {
 	
 	List<Facture> retrieveAllFacture();
 

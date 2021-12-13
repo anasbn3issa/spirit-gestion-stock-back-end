@@ -19,7 +19,7 @@ import tn.esprit.spring.services.client.ClientServiceImpl;
 import tn.esprit.spring.services.detailFact.DetFactServiceImpl;
 
 @Service
-public class FactureServiceImpl implements FactureService{
+public class FactureRepositoryImpl implements FactureRepositoryCustom{
 	
 	@Autowired
 	private FactureRepository factureRepository;
@@ -35,6 +35,7 @@ public class FactureServiceImpl implements FactureService{
 
 	@Override
 	public Facture addFacture(Facture f, Long idClient) {
+		
 		float montantRemise = 0;
 		float montantSansRemise = 0;
 		
@@ -113,10 +114,9 @@ public class FactureServiceImpl implements FactureService{
 		return progression;
 	}
 
-	@Override
-	@Scheduled(fixedRate=5000)
+	@Override	
+	@Scheduled(cron = "0 0 0 1 * *" )
 	public void getProgressionEntrepriseCreationToPresent() {
-//		Facture oldestFacture = factureRepository.retrieveOldestFacture();
 		Facture oldestFacture = factureRepository.findFirstByOrderByDateFactureAsc();
 		float prog = getProgressionEntreprise(oldestFacture.getDateFacture(), Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 		

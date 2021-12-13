@@ -13,13 +13,13 @@ import tn.esprit.spring.dto.ChiffreAffaireParCategorieClientDTO;
 import tn.esprit.spring.dto.RevenuGenereProduitDTO;
 import tn.esprit.spring.entities.Facture;
 import tn.esprit.spring.services.detailFact.DetFactServiceImpl;
-import tn.esprit.spring.services.facture.FactureService;
+import tn.esprit.spring.services.facture.FactureRepositoryCustom;
 
 @RestController
 @RequestMapping("/facture")
 public class FactureRestController {
 	@Autowired
-	private FactureService factureService;
+	private FactureRepositoryCustom factureService;
 	@Autowired
 	private DetFactServiceImpl detailFactureService;
 	
