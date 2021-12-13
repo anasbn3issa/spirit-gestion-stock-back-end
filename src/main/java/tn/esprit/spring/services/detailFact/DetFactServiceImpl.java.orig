@@ -1,0 +1,27 @@
+package tn.esprit.spring.services.detailFact;
+
+import java.util.Date;
+import java.util.List;
+
+import tn.esprit.spring.entities.DetailFacture;
+
+
+public interface DetFactServiceImpl {
+	
+	List<DetailFacture> retrieveAllFctDetails();
+
+	DetailFacture addFctDetail(DetailFacture df);
+
+	void deleteFctDetail(Long id);
+
+	DetailFacture updateFctDetail(DetailFacture df);
+
+<<<<<<< HEAD
+	DetailFacture retrieveProdDetail(Long id);
+	
+	float getRevenuBrutProduit(Long idProduit, Date startDate, Date endDate);
+=======
+	DetailFacture retrieveFctDetail(Long id);
+>>>>>>> 66ef63ae7942ba133d009bc096dbc2ec80489f84
+
+}

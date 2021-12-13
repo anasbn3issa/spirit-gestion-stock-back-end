@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
@@ -33,8 +34,8 @@ public class Stock implements Serializable{
 	Integer qteMin;
 	@NotNull
 	String libelleStock;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="stock")
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER ,mappedBy="stock")
+	@JsonIgnore 
 	private Set<Produit> produits;	
 	
 }

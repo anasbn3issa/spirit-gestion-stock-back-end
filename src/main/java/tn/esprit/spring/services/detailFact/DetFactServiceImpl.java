@@ -8,13 +8,13 @@ import tn.esprit.spring.entities.DetailFacture;
 
 public interface DetFactServiceImpl {
 	
-	List<DetailFacture> retrieveAllPrdoDetails();
+	List<DetailFacture> retrieveAllFctDetails();
 
-	DetailFacture addProdDetail(DetailFacture df);
+	DetailFacture addFctDetail(DetailFacture df);
 
-	void deleteProdDetail(Long id);
+	void deleteFctDetail(Long id);
 
-	DetailFacture updateProdDetail(DetailFacture df);
+	DetailFacture updateFctDetail(DetailFacture df);
 
 	DetailFacture retrieveProdDetail(Long id);
 	

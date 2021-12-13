@@ -3,6 +3,7 @@ package tn.esprit.spring.services.produit;
 import java.util.List;
 
 import tn.esprit.spring.entities.Produit;
+import tn.esprit.spring.entities.Stock;
 
 
 public interface ProduitServiceImpl {
@@ -16,6 +17,9 @@ public interface ProduitServiceImpl {
 	Produit updateProduit(Produit p);
 	
 	void deleteProduit(Long id);
+	
+	
+	
 
 
 

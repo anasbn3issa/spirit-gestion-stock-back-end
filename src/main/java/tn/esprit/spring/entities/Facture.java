@@ -43,7 +43,7 @@ public class Facture implements Serializable{
 	@NotNull
 	boolean active;
 	@NotNull
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="facture")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="facture", fetch = FetchType.LAZY)
 	Set<DetailFacture> factDetails;
 	
 	@NotNull

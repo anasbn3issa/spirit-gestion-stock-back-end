@@ -1,0 +1,29 @@
+package tn.esprit.spring.repositories;
+
+<<<<<<< HEAD
+import java.util.Date;
+import java.util.List;
+=======
+import java.util.Set;
+>>>>>>> 66ef63ae7942ba133d009bc096dbc2ec80489f84
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import tn.esprit.spring.entities.DetailFacture;
+
+@Repository
+public interface DetailFactRepository extends CrudRepository<DetailFacture, Long> {
+<<<<<<< HEAD
+	
+	@Query("SELECT df FROM DetailFacture df WHERE df.facture.dateFacture BETWEEN :startDate AND :endDate AND df.produit.idProduit = :idProduit")
+	List<DetailFacture> findDetailFacturesProduitDansIntervalle(@Param("startDate") Date
+			startDate, @Param("endDate") Date endDate, @Param("idProduit") Long idProduit);
+
+=======
+	@Query("SELECT df from DetailFacture df where df.facture.idFacture = ?1 AND df.produit.idProduit = ?2")
+	Set<DetailFacture> getDetFactByFactureProduit(Long idFacture, Long idProduit);
+>>>>>>> 66ef63ae7942ba133d009bc096dbc2ec80489f84
+}
