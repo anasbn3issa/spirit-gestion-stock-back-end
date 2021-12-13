@@ -1,5 +1,6 @@
 package tn.esprit.spring.services.detailFact;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,20 @@ public class DtFctServiceImpl implements DetFactServiceImpl{
 	@Override
 	public DetailFacture retrieveFctDetail(Long id) {
 		return detailFactRepository.findById(id).orElse(null);
+	}
+
+	@Override
+	public float getRevenuBrutProduit(Long idProduit, Date startDate, Date endDate) {
+		List<DetailFacture> detailsFactures = detailFactRepository.findDetailFacturesProduitDansIntervalle(startDate, endDate, idProduit);
+		
+		float montantTotal = 0;
+		
+		for(DetailFacture df : detailsFactures) {
+			montantTotal = montantTotal + (df.getPrixTotal() - df.getMontantRemise()) * df.getQte();
+			System.out.println("Df : " + df.getIdDetailFacture());
+		}
+		
+		return montantTotal;
 	}
 	
 
