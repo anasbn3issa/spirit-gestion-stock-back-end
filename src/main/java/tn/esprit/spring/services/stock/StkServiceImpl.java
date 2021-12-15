@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.java.Log;
-import tn.esprit.spring.config.LoggingAspect;
 import tn.esprit.spring.entities.Produit;
 import tn.esprit.spring.entities.Stock;
 import tn.esprit.spring.repositories.ProduitRepository;
